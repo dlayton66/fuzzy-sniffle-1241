@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2023_01_06_212522) do
   create_table "dishes_ingredients", id: false, force: :cascade do |t|
     t.bigint "dish_id"
     t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["dish_id"], name: "index_dishes_ingredients_on_dish_id"
     t.index ["ingredient_id"], name: "index_dishes_ingredients_on_ingredient_id"
   end
@@ -40,6 +42,8 @@ ActiveRecord::Schema.define(version: 2023_01_06_212522) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "calories"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "dishes", "chefs"
