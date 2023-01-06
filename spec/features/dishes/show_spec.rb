@@ -17,13 +17,19 @@ RSpec.describe 'dish show page' do
                                         calories: 200)
       ingredient_2 = Ingredient.create!(name: "Noodles",
                                         calories: 300)
+      dish_ingredient_1 = DishIngredient.create!(dish_id: dish_1.id,
+                                                 ingredient_id: ingredient_1.id)
+      dish_ingredient_2 = DishIngredient.create!(dish_id: dish_1.id,
+                                                 ingredient_id: ingredient_2.id)
       
 
       visit dish_path(dish_1)
 
       expect(page).to have_content(dish_1.name)
       expect(page).to have_content(dish_1.description)
-      expect(page).to have_content(dish_1.name)
+      expect(page).to have_content(ingredient_1.name)
+      expect(page).to have_content(ingredient_2.name)
+      expect(page).to have_content(dish_1.total_calories)
     end
   end
 end
